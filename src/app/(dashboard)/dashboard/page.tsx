@@ -40,7 +40,7 @@ export default function DashboardPage() {
             <p className="mb-4 text-[var(--muted-foreground)]">
               Create your first workspace to get started.
             </p>
-            <Link href="/dashboard/settings">
+            <Link href="/settings">
               <Button>
                 <Plus className="mr-2 h-4 w-4" />
                 Create Workspace
@@ -104,13 +104,13 @@ export default function DashboardPage() {
           <div className="mb-8">
             <h2 className="mb-4 text-lg font-semibold">Quick Actions</h2>
             <div className="flex gap-4">
-              <Link href="/dashboard/workflows/new">
+              <Link href="/workflows/new">
                 <Button>
                   <Plus className="mr-2 h-4 w-4" />
                   New Workflow
                 </Button>
               </Link>
-              <Link href="/dashboard/connections">
+              <Link href="/connections">
                 <Button variant="outline">
                   <Link2 className="mr-2 h-4 w-4" />
                   Manage Connections
@@ -127,7 +127,7 @@ export default function DashboardPage() {
                 {workflows.slice(0, 6).map((workflow: { _id: string; name: string; status: string; description?: string; nodes: unknown[]; version: number }) => (
                   <Link
                     key={workflow._id}
-                    href={`/dashboard/workflows/${workflow._id}`}
+                    href={`/workflows/${workflow._id}`}
                   >
                     <Card className="cursor-pointer transition-shadow hover:shadow-md">
                       <CardHeader>
@@ -170,7 +170,7 @@ export default function DashboardPage() {
                   <p className="mb-4 text-[var(--muted-foreground)]">
                     Create your first workflow to automate your SDLC.
                   </p>
-                  <Link href="/dashboard/workflows/new">
+                  <Link href="/workflows/new">
                     <Button>
                       <Plus className="mr-2 h-4 w-4" />
                       Create Workflow

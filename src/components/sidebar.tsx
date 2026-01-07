@@ -17,9 +17,9 @@ import type { Workspace } from "@/types";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Workflows", href: "/dashboard/workflows", icon: Workflow },
-  { name: "Connections", href: "/dashboard/connections", icon: Link2 },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Workflows", href: "/workflows", icon: Workflow },
+  { name: "Connections", href: "/connections", icon: Link2 },
+  { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function Sidebar() {

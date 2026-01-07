@@ -56,7 +56,7 @@ export default function WorkflowsPage() {
             Create and manage your automation workflows.
           </p>
         </div>
-        <Link href="/dashboard/workflows/new">
+        <Link href="/workflows/new">
           <Button>
             <Plus className="mr-2 h-4 w-4" />
             New Workflow
@@ -78,7 +78,7 @@ export default function WorkflowsPage() {
             <Card key={workflow._id} className="relative">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <Link href={`/dashboard/workflows/${workflow._id}`}>
+                  <Link href={`/workflows/${workflow._id}`}>
                     <CardTitle className="cursor-pointer text-base hover:text-[var(--primary)]">
                       {workflow.name}
                     </CardTitle>
@@ -148,7 +148,7 @@ export default function WorkflowsPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <Link href={`/dashboard/workflows/${workflow._id}`}>
+                <Link href={`/workflows/${workflow._id}`}>
                   <p className="cursor-pointer text-sm text-[var(--muted-foreground)]">
                     {workflow.description || "No description"}
                   </p>
@@ -168,7 +168,7 @@ export default function WorkflowsPage() {
             <p className="mb-4 text-[var(--muted-foreground)]">
               Create your first workflow to start automating.
             </p>
-            <Link href="/dashboard/workflows/new">
+            <Link href="/workflows/new">
               <Button>
                 <Plus className="mr-2 h-4 w-4" />
                 Create Workflow

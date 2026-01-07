@@ -33,7 +33,7 @@ export default function CodePreviewPage() {
     <div className="h-full overflow-auto p-8">
       <div className="mb-8">
         <Link
-          href={`/dashboard/workflows/${workflowId}`}
+          href={`/workflows/${workflowId}`}
           className="mb-4 flex items-center text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />

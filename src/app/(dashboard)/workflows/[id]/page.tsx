@@ -7,7 +7,8 @@ import { Id } from "../../../../../convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
 import { WorkflowCanvas } from "@/components/workflow/canvas";
 import { NodeLibrary } from "@/components/workflow/node-library";
-import { ArrowLeft, Save, Play, Code } from "lucide-react";
+import { DeployButton } from "@/components/workflow/deploy-button";
+import { ArrowLeft, Save, Code } from "lucide-react";
 import Link from "next/link";
 import { useState, useCallback } from "react";
 import { Node, Edge } from "@xyflow/react";
@@ -100,7 +101,7 @@ export default function WorkflowEditorPage() {
       <div className="flex items-center justify-between border-b bg-[var(--background)] px-4 py-3">
         <div className="flex items-center gap-4">
           <Link
-            href="/dashboard/workflows"
+            href="/workflows"
             className="text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
           >
             <ArrowLeft className="h-5 w-5" />
@@ -113,7 +114,7 @@ export default function WorkflowEditorPage() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Link href={`/dashboard/workflows/${workflowId}/code`}>
+          <Link href={`/workflows/${workflowId}/code`}>
             <Button variant="outline" size="sm">
               <Code className="mr-2 h-4 w-4" />
               View Code
@@ -128,10 +129,12 @@ export default function WorkflowEditorPage() {
             <Save className="mr-2 h-4 w-4" />
             {isSaving ? "Saving..." : "Save"}
           </Button>
-          <Button size="sm">
-            <Play className="mr-2 h-4 w-4" />
-            Deploy
-          </Button>
+          <DeployButton
+            workflowId={workflowId}
+            workspaceId={workflow.workspaceId}
+            workflowName={workflow.name}
+            disabled={hasChanges}
+          />
         </div>
       </div>
 

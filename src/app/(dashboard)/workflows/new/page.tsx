@@ -31,7 +31,7 @@ export default function NewWorkflowPage() {
         name: name.trim(),
         description: description.trim() || undefined,
       });
-      router.push(`/dashboard/workflows/${workflowId}`);
+      router.push(`/workflows/${workflowId}`);
     } catch (error) {
       console.error("Failed to create workflow:", error);
     } finally {
@@ -43,7 +43,7 @@ export default function NewWorkflowPage() {
     <div className="p-8">
       <div className="mb-8">
         <Link
-          href="/dashboard/workflows"
+          href="/workflows"
           className="mb-4 flex items-center text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -94,7 +94,7 @@ export default function NewWorkflowPage() {
               <Button type="submit" disabled={isLoading || !name.trim()}>
                 {isLoading ? "Creating..." : "Create Workflow"}
               </Button>
-              <Link href="/dashboard/workflows">
+              <Link href="/workflows">
                 <Button type="button" variant="outline">
                   Cancel
                 </Button>
