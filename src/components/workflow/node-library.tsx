@@ -10,6 +10,7 @@ import {
   FileCode,
   Filter,
   Repeat,
+  Github,
 } from "lucide-react";
 
 interface NodeTemplate {
@@ -18,29 +19,30 @@ interface NodeTemplate {
   icon: React.ElementType;
   category: string;
   data: Record<string, unknown>;
+  description?: string;
 }
 
 const nodeTemplates: NodeTemplate[] = [
   // Triggers
   {
-    type: "trigger",
-    label: "GitHub PR",
-    icon: GitPullRequest,
+    type: "github-trigger",
+    label: "GitHub",
+    icon: Github,
     category: "Triggers",
-    data: { provider: "github", event: "pull_request", label: "GitHub PR" },
-  },
-  {
-    type: "trigger",
-    label: "GitHub Push",
-    icon: GitBranch,
-    category: "Triggers",
-    data: { provider: "github", event: "push", label: "GitHub Push" },
+    description: "PR, Push, Issues, Releases & more",
+    data: {
+      provider: "github",
+      event: "pull_request",
+      selectedActions: ["opened"],
+      label: "GitHub Pull Request",
+    },
   },
   {
     type: "trigger",
     label: "Slack Message",
     icon: MessageSquare,
     category: "Triggers",
+    description: "Trigger on Slack messages",
     data: { provider: "slack", event: "message", label: "Slack Message" },
   },
   {
@@ -48,6 +50,7 @@ const nodeTemplates: NodeTemplate[] = [
     label: "Webhook",
     icon: Webhook,
     category: "Triggers",
+    description: "Custom HTTP webhook",
     data: { provider: "webhook", event: "incoming", label: "Webhook" },
   },
   {
@@ -55,6 +58,7 @@ const nodeTemplates: NodeTemplate[] = [
     label: "Manual",
     icon: Play,
     category: "Triggers",
+    description: "Manually trigger workflow",
     data: { provider: "manual", event: "trigger", label: "Manual" },
   },
 
@@ -156,10 +160,23 @@ export function NodeLibrary() {
                     onDragStart={(e) =>
                       onDragStart(e, template.type, template.data)
                     }
-                    className="flex cursor-grab items-center gap-2 rounded-md border bg-[var(--background)] p-2 text-sm transition-colors hover:border-[var(--primary)] hover:bg-[var(--muted)] active:cursor-grabbing"
+                    className="flex cursor-grab items-center gap-3 rounded-lg border bg-[var(--background)] p-2.5 text-sm transition-all hover:border-[var(--primary)] hover:bg-[var(--muted)] hover:shadow-sm active:cursor-grabbing"
                   >
-                    <template.icon className="h-4 w-4 text-[var(--muted-foreground)]" />
-                    <span>{template.label}</span>
+                    <div className={`flex h-8 w-8 items-center justify-center rounded-md ${
+                      template.type === "github-trigger"
+                        ? "bg-gray-900 text-white"
+                        : "bg-[var(--muted)]"
+                    }`}>
+                      <template.icon className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-medium block">{template.label}</span>
+                      {template.description && (
+                        <span className="text-[10px] text-[var(--muted-foreground)] block truncate">
+                          {template.description}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 ))}
             </div>

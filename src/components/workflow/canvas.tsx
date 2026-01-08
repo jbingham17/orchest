@@ -17,12 +17,14 @@ import {
 import "@xyflow/react/dist/style.css";
 
 import { TriggerNode } from "@/components/nodes/trigger-node";
+import { GitHubTriggerNode } from "@/components/nodes/github-trigger-node";
 import { ActionNode } from "@/components/nodes/action-node";
 import { AgentNode } from "@/components/nodes/agent-node";
 import { LogicNode } from "@/components/nodes/logic-node";
 
 const nodeTypes: NodeTypes = {
   trigger: TriggerNode,
+  "github-trigger": GitHubTriggerNode,
   action: ActionNode,
   agent: AgentNode,
   logic: LogicNode,
